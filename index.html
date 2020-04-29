@@ -9,7 +9,13 @@
   <p id="errorMsg"></p>
 <script type="text/javascript">
 
-  // Put variables in global scope to make them available to the browser console.
+function hasGetUserMedia() {
+  return !!(navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+}
+
+alert(hasGetUserMedia());
+    
+    // Put variables in global scope to make them available to the browser console.
     var video = document.querySelector("video");
     var constraints = (window.constraints = {
       audio: false,
