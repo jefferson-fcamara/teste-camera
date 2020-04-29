@@ -1,6 +1,11 @@
 <html>
 <head>
 <script type="text/javascript">
+    
+    navigator.getUserMedia = navigator.getUserMedia ||
+navigator.webkitGetUserMedia ||
+navigator.mozGetUserMedia;
+    
 // Put variables in global scope to make them available to the browser console.
     var video = document.querySelector("video");
     var constraints = (window.constraints = {
