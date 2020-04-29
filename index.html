@@ -29,9 +29,8 @@ alert('Seu navegador não é compatível');
 navigator.webkitGetUserMedia ||
 navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia;
   
-    navigator.getUserMedia(constraints)
-      .then(function(stream) {
-        var videoTracks = stream.getVideoTracks();
+    navigator.getUserMedia(constraints, function(stream){
+    var videoTracks = stream.getVideoTracks();
         console.log("Got stream with constraints:", constraints);
         console.log("Using video device: " + videoTracks[0].label);
         stream.onremovetrack = function() {
@@ -39,9 +38,8 @@ navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia;
         };
         window.stream = stream; // make variable available to browser console
         video.srcObject = stream;
-      })
-      .catch(function(error) {
-        if (error.name === "ConstraintNotSatisfiedError") {
+    }, function(err){
+      if (error.name === "ConstraintNotSatisfiedError") {
           errorMsg(
             "The resolution " +
               constraints.video.width.exact +
@@ -57,7 +55,7 @@ navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia;
           );
         }
         errorMsg("getUserMedia error: " + error.name, error);
-      });
+    });
 
     function errorMsg(msg, error) {
       errorElement.innerHTML += "<p>" + msg + "</p>";
