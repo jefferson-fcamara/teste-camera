@@ -12,12 +12,11 @@
   alert(navigator.mediaDevices);
   alert(navigator.webkitGetUserMedia);
   alert(navigator.mozGetUserMedia);
+    alert(navigator.getUserMedia);
   alert((navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-  
-  alert([(navigator.mediaDevices && navigator.mediaDevices.getUserMedia), navigator.webkitGetUserMedia, navigator.mozGetUserMedia, navigator.msGetUserMedia]);
-  
+    
   function hasGetUserMedia() {
-    return !!((navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    return !!((navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   }
 
   if(!hasGetUserMedia()){
