@@ -8,12 +8,10 @@
 <video width="400" height="400" autoplay></video>
 <script type="text/javascript">
 
-  alert(navigator.mediaDevices);
-    alert(navigator.getUserMedia);
-  alert(navigator.webkitGetUserMedia);
-  alert(navigator.mozGetUserMedia);
-  navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.mediaDevices.getUserMedia;
+  navigator.getMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
 
 
   // Put variables in global scope to make them available to the browser console.
@@ -24,8 +22,7 @@
   });
   var errorElement = document.querySelector("#errorMsg");
 
-  navigator.mediaDevices
-    .getUserMedia(constraints)
+  navigator.getMedia(constraints)
     .then(function(stream) {
       var videoTracks = stream.getVideoTracks();
       console.log("Got stream with constraints:", constraints);
