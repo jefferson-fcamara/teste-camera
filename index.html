@@ -9,6 +9,10 @@
 <p id="errorMsg"></p>
 <script type="text/javascript">
 
+  alert(navigator.mediaDevices);
+  alert(navigator.webkitGetUserMedia);
+  alert(navigator.mozGetUserMedia);
+  
   function hasGetUserMedia() {
     return !!(navigator.mediaDevices || navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   }
@@ -31,10 +35,10 @@
 
   navigator.getUserMedia(constraints, function(stream){
     var videoTracks = stream.getVideoTracks();
-    console.log("Got stream with constraints:", constraints);
-    console.log("Using video device: " + videoTracks[0].label);
+    alert("Got stream with constraints:", constraints);
+    alert("Using video device: " + videoTracks[0].label);
     stream.onremovetrack = function() {
-      console.log("Stream ended");
+      alert("Stream ended");
     };
     window.stream = stream; // make variable available to browser console
     video.srcObject = stream;
