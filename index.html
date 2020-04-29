@@ -6,6 +6,8 @@
 navigator.webkitGetUserMedia ||
 navigator.mozGetUserMedia;
     
+ alert(Object.keys(navigator.getUserMedia));
+
 // Put variables in global scope to make them available to the browser console.
     var video = document.querySelector("video");
     var constraints = (window.constraints = {
