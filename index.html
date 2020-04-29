@@ -12,6 +12,9 @@
   alert(navigator.mediaDevices);
   alert(navigator.webkitGetUserMedia);
   alert(navigator.mozGetUserMedia);
+  alert(navigator.mediaDevices || navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  
+  alert([navigator.mediaDevices, navigator.mediaDevices.getUserMedia, navigator.webkitGetUserMedia, navigator.mozGetUserMedia, navigator.msGetUserMedia]);
   
   function hasGetUserMedia() {
     return !!(navigator.mediaDevices || navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
